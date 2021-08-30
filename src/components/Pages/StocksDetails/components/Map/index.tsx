@@ -25,7 +25,7 @@ const Map: FC<MapProps> = ({ name, country, address, state }) => {
   };
 
   useEffect(() => {
-      //GET company lat/lng
+      //GET company lat/lng by search using name, country, address, state 
   }, [])
 
   return (

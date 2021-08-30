@@ -9,6 +9,7 @@ import { httpRequestWrapper } from '../../../utils/api';
 
 interface StockType {
   name: string;
+  ticker: string;
 }
 
 const StocksSearch: FC = () => {
@@ -26,6 +27,9 @@ const StocksSearch: FC = () => {
   }, [open]);
 
   const handleSearchChange = (event: unknown) => {
+    if (!event) {
+      return;
+    }
     const search = (event as React.ChangeEvent<{ value: string }>).target.value;
     setSearch(search);
   };
@@ -70,7 +74,12 @@ const StocksSearch: FC = () => {
         setOpen(false);
       }}
       getOptionSelected={(option, value) => option.name === value.name}
-      getOptionLabel={(option) => option.name}
+      getOptionLabel={(option) => {
+        const { name, ticker } = option;
+        const searchByTicker = ticker.toLowerCase().indexOf(search) !== -1;
+
+        return searchByTicker ? ticker : name;
+      }}
       options={options}
       loading={loading}
       fullWidth

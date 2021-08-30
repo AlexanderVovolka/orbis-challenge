@@ -96,7 +96,7 @@ const StocksDetails: FC = () => {
                 Related Stocks
               </Grid>
               <Grid item xs={12} className={classes.stocksContainer}>
-                {company?.similar.map((stock: string, index) => (
+                {company?.similar?.map((stock: string, index) => (
                   <Link
                     to={generatePath(Paths.StocksDetails, { ticker: stock })}
                     key={stock}
@@ -120,7 +120,7 @@ const StocksDetails: FC = () => {
               </Grid>
               <Grid item xs={12}>
                 <Grid container>
-                  {company?.tags.map((tag: string, index) => (
+                  {company?.tags?.map((tag: string, index) => (
                     <div
                       className={cns(
                         classes.tags,
