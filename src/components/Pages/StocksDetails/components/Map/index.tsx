@@ -1,7 +1,12 @@
-import React, { FC, useEffect } from "react";
-import GoogleMapReact from "google-map-react";
+import React, { FC, useEffect } from 'react';
+import GoogleMapReact from 'google-map-react';
 
-const CompanyMarker = ({ text }: any) => <div>{text}</div>;
+interface CompanyMarkerProps { 
+  text: string;
+  lat: number;
+  lng: number;
+ }
+const CompanyMarker: FC<CompanyMarkerProps> = ({ text }) => <div>{text}</div>;
 
 interface MapProps {
   name: string;
@@ -24,9 +29,9 @@ const Map: FC<MapProps> = ({ name, country, address, state }) => {
   }, [])
 
   return (
-    <div style={{ height: "164px", width: "100%" }}>
+    <div style={{ height: '164px', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCgjEhbQ3Gi_1dEwn4ilkrSfYSY42HhaSI" }}
+        bootstrapURLKeys={{ key: 'AIzaSyCgjEhbQ3Gi_1dEwn4ilkrSfYSY42HhaSI' }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
       >

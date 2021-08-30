@@ -1,29 +1,29 @@
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 72;
 
 export default makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      display: "flex",
+      display: 'flex',
     },
     drawer: {
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up('sm')]: {
         width: drawerWidth,
         flexShrink: 0,
       },
     },
     menuButton: {
       marginRight: theme.spacing(2),
-      [theme.breakpoints.up("sm")]: {
-        display: "none",
+      [theme.breakpoints.up('sm')]: {
+        display: 'none',
       },
     },
     drawerPaper: {
       width: drawerWidth,
-      backgroundColor: "#B6B7C3",
-      padding: "16px 18px",
-      boxSizing: "border-box",
+      backgroundColor: '#B6B7C3',
+      padding: '16px 18px',
+      boxSizing: 'border-box',
     },
     content: {
       flexGrow: 1,
@@ -36,7 +36,7 @@ export default makeStyles((theme: Theme) =>
       },
     },
     avatar: {
-      backgroundColor: "#001458",
+      backgroundColor: '#001458',
       width: 35,
       height: 35,
     },

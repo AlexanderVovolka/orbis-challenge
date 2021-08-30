@@ -1,17 +1,17 @@
-import React, { FC } from "react";
-import { Link, generatePath } from "react-router-dom";
-import Grid from "@material-ui/core/Grid";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import cns from "classnames";
+import React, { FC } from 'react';
+import { Link, generatePath } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import cns from 'classnames';
 
-import PageLayout from "../../Layouts/PageLayout";
-import Paths from "../../../constants/paths";
-import useStockDetails from "./useStocksDetails";
-import Price from "./components/Price";
-import Chart from "./components/Chart";
-import Map from "./components/Map";
+import PageLayout from '../../Layouts/PageLayout';
+import Paths from '../../../constants/paths';
+import useStockDetails from './useStocksDetails';
+import Price from './components/Price';
+import Chart from './components/Chart';
+import Map from './components/Map';
 
-import useStyles from "./styles";
+import useStyles from './styles';
 
 const StocksDetails: FC = () => {
   const classes = useStyles();
@@ -33,8 +33,8 @@ const StocksDetails: FC = () => {
           {bars && (
             <Grid
               container
-              className="graph"
-              style={{ backgroundColor: "#FFF" }}
+              className='graph'
+              style={{ backgroundColor: '#FFF' }}
             >
               <Chart bars={bars} />
             </Grid>
@@ -56,11 +56,11 @@ const StocksDetails: FC = () => {
                       <div className={classes.value}>{company?.industry}</div>
                     </Grid>
                     <Grid container>
-                      <div className="title">CEO: </div>
+                      <div className='title'>CEO: </div>
                       <div className={classes.value}>{company?.ceo}</div>
                     </Grid>
                     <Grid container>
-                      <div className="title">Employees: </div>
+                      <div className='title'>Employees: </div>
                       <div className={classes.value}>{company?.employees}</div>
                     </Grid>
                   </Grid>
@@ -95,7 +95,7 @@ const StocksDetails: FC = () => {
               <Grid item xs={12} className={classes.title}>
                 Related Stocks
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} className={classes.stocksContainer}>
                 {company?.similar.map((stock: string, index) => (
                   <Link
                     to={generatePath(Paths.StocksDetails, { ticker: stock })}

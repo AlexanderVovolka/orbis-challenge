@@ -1,13 +1,13 @@
-import React, { FC, useState } from "react";
-import Drawer from "@material-ui/core/Drawer";
-import Hidden from "@material-ui/core/Hidden";
-import Avatar from "@material-ui/core/Avatar";
-import Container from "@material-ui/core/Container";
+import React, { FC, useState } from 'react';
+import Drawer from '@material-ui/core/Drawer';
+import Hidden from '@material-ui/core/Hidden';
+import Avatar from '@material-ui/core/Avatar';
+import Container from '@material-ui/core/Container';
 
-import ActionBar from "../UI/ActionBar";
-import StocksSearch from "../Forms/StocksSearch";
+import ActionBar from '../UI/ActionBar';
+import StocksSearch from '../Forms/StocksSearch';
 
-import makeStyles from "./styles";
+import makeStyles from './styles';
 
 const PageLayout: FC = ({ children }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -19,7 +19,7 @@ const PageLayout: FC = ({ children }) => {
 
   const drawer = (
     <div>
-      <Avatar classes={{ colorDefault: classes.avatar }} children={"AV"} />
+      <Avatar classes={{ colorDefault: classes.avatar }} children={'AV'} />
     </div>
   );
 
@@ -29,10 +29,10 @@ const PageLayout: FC = ({ children }) => {
         <StocksSearch />
       </ActionBar>
       <nav className={classes.drawer}>
-        <Hidden smUp implementation="css">
+        <Hidden smUp implementation='css'>
           <Drawer
-            variant="temporary"
-            anchor={"left"}
+            variant='temporary'
+            anchor={'left'}
             open={mobileOpen}
             onClose={handleDrawerToggle}
             classes={{
@@ -45,12 +45,12 @@ const PageLayout: FC = ({ children }) => {
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden xsDown implementation='css'>
           <Drawer
             classes={{
               paper: classes.drawerPaper,
             }}
-            variant="permanent"
+            variant='permanent'
             open
           >
             {drawer}

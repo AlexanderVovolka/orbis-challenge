@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-} from "react-router-dom";
-import { ThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
+} from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Stocks from "./components/Pages/Stocks";
-import StocksDetails from "./components/Pages/StocksDetails";
-import Paths from "./constants/paths";
+import Stocks from './components/Pages/Stocks';
+import StocksDetails from './components/Pages/StocksDetails';
+import Paths from './constants/paths';
 
-import { theme } from "./theme";
+import { theme } from './theme';
 
 const App: React.FC = () => {
   return (

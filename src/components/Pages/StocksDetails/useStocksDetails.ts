@@ -1,7 +1,7 @@
-import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { format, sub } from "date-fns";
-import { API_KEY, BASE_API } from "../../../constants/api";
+import { useCallback, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { format, sub } from 'date-fns';
+import { httpRequestWrapper } from '../../../utils/api';
 
 export interface CompanyProps {
   symbol: string;
@@ -47,20 +47,20 @@ const useStockDetails = () => {
       try {
         setLoading(true);
 
-        const companyUrl = `${BASE_API}/v1/meta/symbols/${ticker}/company?apiKey=${API_KEY}`;
+        const companyUrl = httpRequestWrapper(`/v1/meta/symbols/${ticker}/company?`);
         const company = await fetch(companyUrl).then((response) =>
           response.json()
         );
         setCompany(company);
 
-        const date = format(sub(new Date(), { days: 4 }), "yyyy-MM-dd");
-        const priceUrl = `${BASE_API}/v1/open-close/${ticker}/${date}?apiKey=${API_KEY}`;
+        const date = format(sub(new Date(), { days: 4 }), 'yyyy-MM-dd');
+        const priceUrl = httpRequestWrapper(`/v1/open-close/${ticker}/${date}?`);
         const price = await fetch(priceUrl).then((response) => response.json());
         setPrice(price);
         
-        const fromDate = format(sub(new Date(), { months: 12 }), "yyyy-MM-dd")
-        const toDate = format(sub(new Date(), { days: 1 }), "yyyy-MM-dd")
-        const barsUls = `${BASE_API}/v2/aggs/ticker/${ticker}/range/12/day/${fromDate}/${toDate}?apiKey=${API_KEY}`;
+        const fromDate = format(sub(new Date(), { months: 12 }), 'yyyy-MM-dd')
+        const toDate = format(sub(new Date(), { days: 1 }), 'yyyy-MM-dd')
+        const barsUls = httpRequestWrapper(`/v2/aggs/ticker/${ticker}/range/12/day/${fromDate}/${toDate}?`);
         const bars = await fetch(barsUls).then((response) => response.json());
         setBars(bars?.results || []);
 

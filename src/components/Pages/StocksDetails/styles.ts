@@ -1,4 +1,4 @@
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +29,10 @@ export default makeStyles((theme: Theme) =>
     tagsSection: {
       marginTop: '40px',
     },
+    stocksContainer: {
+      display: 'flex',
+      flexWrap: 'wrap',
+    },
     tags: {
       fontSize: '14px',
       padding: '6px 18px',
@@ -53,7 +57,7 @@ export default makeStyles((theme: Theme) =>
       backgroundColor: '#8B40CB',
     },
     loadingWrapper: {
-      display: "flex",
+      display: 'flex',
       justifyContent: 'center',
     },
   })

@@ -1,11 +1,11 @@
-import React, { FC, useState, Fragment, useEffect } from "react";
-import { useHistory, generatePath } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import CircularProgressIcon from "@material-ui/core/CircularProgress";
-import SearchIcon from "@material-ui/icons/Search";
-import { BASE_API, API_KEY } from '../../../constants/api';
-import Paths from "../../../constants/paths";
+import React, { FC, useState, Fragment, useEffect } from 'react';
+import { useHistory, generatePath } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import CircularProgressIcon from '@material-ui/core/CircularProgress';
+import SearchIcon from '@material-ui/icons/Search';
+import Paths from '../../../constants/paths';
+import { httpRequestWrapper } from '../../../utils/api';
 
 interface StockType {
   name: string;
@@ -13,7 +13,7 @@ interface StockType {
 
 const StocksSearch: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
   const [options, setOptions] = useState<StockType[]>([]);
   const [value, setValue] = useState<StockType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -25,14 +25,13 @@ const StocksSearch: FC = () => {
     }
   }, [open]);
 
-  const handleSearchChange = (event: any) => {
-    const search = event.target.value;
+  const handleSearchChange = (event: unknown) => {
+    const search = (event as React.ChangeEvent<{ value: string }>).target.value;
     setSearch(search);
   };
 
   const handleValueChange = (event:any, value:any) => {
     if (value) {
-      console.log(value);
       setValue(value);
       history.push(generatePath(Paths.StocksDetails, { ticker: value.ticker }))
     }
@@ -42,7 +41,7 @@ const StocksSearch: FC = () => {
     if (search && search.length !== 0) {
       setLoading(true);
 
-      const url = `${BASE_API}/v3/reference/tickers?search=${search}&apiKey=${API_KEY}`;
+      const url = httpRequestWrapper(`/v3/reference/tickers?search=${search}&`)
       fetch(url).then((response) => {
         if (response.status >= 200 && response.status < 300) {
           return response.json();
@@ -53,7 +52,6 @@ const StocksSearch: FC = () => {
         setLoading(false);
       }).catch((error) => {
         setLoading(false);
-        console.log('Error', error)
       })
     }
   }, [search]);
@@ -79,7 +77,7 @@ const StocksSearch: FC = () => {
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Search symbols or companies"
+          placeholder='Search symbols or companies'
           InputProps={{
             ...params.InputProps,
             disableUnderline: true,
